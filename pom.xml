@@ -1,0 +1,215 @@
+<!--
+  ~ Licensed to Jasig under one or more contributor license
+  ~ agreements. See the NOTICE file distributed with this work
+  ~ for additional information regarding copyright ownership.
+  ~ Jasig licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file
+  ~ except in compliance with the License.  You may obtain a
+  ~ copy of the License at the following location:
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!--parent>
+    <groupId>org.jasig.cas</groupId>
+    <artifactId>cas-server</artifactId>
+    <version>4.0.0</version>
+  </parent-->
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.framework</groupId>
+  <artifactId>cas-webapp</artifactId>
+  <version>4.0.0</version>
+  <packaging>war</packaging>
+  <name>Jasig CAS Web Application</name>
+	
+  <properties>
+    <cs.dir>${project.basedir}</cs.dir>
+    <pac4j.version>1.4.1</pac4j.version>
+    <cas-server.version>4.0.0</cas-server.version>
+    <mysql.vertion>5.1.28</mysql.vertion>
+    <spring.version>3.2.6.RELEASE</spring.version>
+	<!-- default to dev config -->
+    <buildEnv>dev</buildEnv>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.jasig.cas</groupId>
+      <artifactId>cas-server-webapp-support</artifactId>
+      <version>${cas-server.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jasig.cas</groupId>
+      <artifactId>cas-server-support-pac4j</artifactId>
+      <version>${cas-server.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.pac4j</groupId>
+      <artifactId>pac4j-cas</artifactId>
+      <version>${pac4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.pac4j</groupId>
+      <artifactId>pac4j-oauth</artifactId>
+      <version>${pac4j.version}</version>
+    </dependency>
+    <!--dependency>
+      <groupId>org.pac4j</groupId>
+      <artifactId>pac4j-openid</artifactId>
+      <version>${pac4j.version}</version>
+    </dependency-->
+    <!--dependency>
+      <groupId>org.jasig.cas</groupId>
+      <artifactId>cas-server-support-openid</artifactId>
+      <version>${cas-server.version}</version>
+    </dependency-->
+    <dependency>
+      <groupId>org.jasig.cas</groupId>
+      <artifactId>cas-server-support-oauth</artifactId>
+      <version>${cas-server.version}</version>
+    </dependency>
+    <!--dependency>
+         <groupId>org.jasig.cas</groupId>
+         <artifactId>cas-server-support-ldap</artifactId>
+         <version>${cas-server.version}</version>
+    </dependency-->
+    <dependency>
+      <groupId>org.jasig.cas</groupId>
+      <artifactId>cas-server-integration-ehcache</artifactId>
+      <version>${cas-server.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jasig.cas</groupId>
+      <artifactId>cas-server-support-jdbc</artifactId>
+      <version>${cas-server.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jasig.cas</groupId>
+      <artifactId>cas-server-integration-restlet</artifactId>
+      <version>${cas-server.version}</version>
+    </dependency>
+
+    <!-- jstl -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.1.2</version>
+      <type>jar</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+      <type>jar</type>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- ds -->
+    <!-- Mysql dependencies -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>${mysql.vertion}</version>
+	</dependency>
+     <dependency>
+        <groupId>c3p0</groupId>
+        <artifactId>c3p0</artifactId>
+        <version>0.9.1.2</version>
+    </dependency>
+	<dependency>
+	    <groupId>commons-dbcp</groupId>
+	    <artifactId>commons-dbcp</artifactId>
+	    <version>1.4</version>
+		<scope>runtime</scope>
+    </dependency>
+	<dependency>
+	    <groupId>commons-pool</groupId>
+	    <artifactId>commons-pool</artifactId>
+	    <version>1.5.4</version>
+		<scope>runtime</scope>
+    </dependency>
+
+     <!-- spring 3.2.6 -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-tx</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-web</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+
+     <!-- framework -->
+     <dependency>
+        <groupId>com.framework</groupId>
+        <artifactId>framework-encryption-service</artifactId>
+        <version>1.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!--plugin>
+        <groupId>com.mycila.maven-license-plugin</groupId>
+        <artifactId>maven-license-plugin</artifactId>
+        <version>1.10.b1</version>
+        <configuration>
+            <skip>true</skip>
+            <failIfMissing>false</failIfMissing>
+            <header>src/licensing/header.txt</header>
+            <aggregate>true</aggregate>
+            <includes>
+                <include>**/*.*</include>
+            </includes>
+        </configuration>
+	  </plugin-->
+
+       <!--plugin>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+            <skip>true</skip>
+            <failsOnError>false</failsOnError>
+        </configuration>
+      </plugin-->
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warName>cas-webapp</warName>
+		  
+		  <webResources>
+            <resource>
+              <!-- this is relative to the pom.xml directory -->
+              <directory>../configs/${buildEnv}/cas</directory>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+
+
+</project>
+
